@@ -5,6 +5,8 @@ dist
 coverage
 apidoc
 
+.next/
+
 .idea/
 npm-debug.log*
 yarn-debug.log*
