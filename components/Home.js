@@ -19,17 +19,14 @@ export class HomeScreen extends Component {
   //   }
   // }
   render() {
-    const { translate } = this.props;
-    const translationLoaded =
-      (!!translate && translate.translationLoaded) || false;
-    const translation = (!!translate && translate.translation) || false;
+    // const { translate } = this.props;
+    // const translationLoaded = (!!translate && translate.translationLoaded) || false;
+    // const translation = (!!translate && translate.translation) || false;
 
-    console.log("--- Home render props: ", translation);
+    // console.log("--- Home render props: ", translation);
 
-    const screens = !!translation.translate
-      ? translation.translate.screens
-      : {};
-    const homepage = !!screens ? screens.homepage : {};
+    // const screens = !!translation.translate ? translation.translate.screens : {};
+    // const homepage = !!screens ? screens.homepage : {};
 
     // if (!translationLoaded && !homepage) {
     //   return <div>Loading translation...</div>
@@ -37,16 +34,14 @@ export class HomeScreen extends Component {
 
     return (
       <Fragment>
-        <h1>miwebsite.com</h1>
-
-        {homepage ? showHomePhrase(homepage) : null}
+        <h1>mY website.com</h1>
       </Fragment>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  translate: state.translate
+const mapStateToProps = (state) => ({
+  translate: state.translate,
 });
 
 // const mapDispatchToProps = dispatch => ({
