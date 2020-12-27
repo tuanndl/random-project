@@ -4,7 +4,7 @@ import Head from "next/head";
 
 import ActionCreator from "../redux/actionCreators";
 
-import HomeScreen from "../components/Home";
+import { Home, Header, Footer } from "../components";
 
 class Index extends Component {
   static async getInitialProps({ ctx }) {
@@ -30,9 +30,18 @@ class Index extends Component {
           <title>My website</title>
           <meta name="title" content="my website" />
           <meta description="Here is the description" />
+          <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+            rel="stylesheet"
+          ></link>
         </Head>
 
-        <HomeScreen />
+        <Header />
+
+        <Home />
+
+        <Footer />
       </Fragment>
     );
   }

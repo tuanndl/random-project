@@ -1,40 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import { RandomNumber } from "./random";
 
 // import ActionCreator from "../redux/actionCreators";
 
-const showHomePhrase = ({ mainPhrase }) => <h2>{mainPhrase}</h2>;
-
 export class HomeScreen extends Component {
-  // state = {
-  //   languageUser: {},
-  // }
-  // componentDidMount() {
-  //   //   const { languageUser } = this.state;
-  //   console.log("--- call init HOME props: ", this.props);
-  //   const { dispatch, translate } = this.props;
-
-  //   if (!translate || translate === {}) {
-  //     dispatch(ActionCreator.translationRequest("es"));
-  //   }
-  // }
   render() {
-    // const { translate } = this.props;
-    // const translationLoaded = (!!translate && translate.translationLoaded) || false;
-    // const translation = (!!translate && translate.translation) || false;
-
-    // console.log("--- Home render props: ", translation);
-
-    // const screens = !!translation.translate ? translation.translate.screens : {};
-    // const homepage = !!screens ? screens.homepage : {};
-
-    // if (!translationLoaded && !homepage) {
-    //   return <div>Loading translation...</div>
-    // }
-
     return (
       <Fragment>
-        <h1>mY website.com</h1>
+        <RandomNumber />
       </Fragment>
     );
   }
