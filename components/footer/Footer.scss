@@ -1,0 +1,42 @@
+.footer {
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+.logo {
+  font-family: Anton;
+  font-size: 25px;
+}
+
+.icon {
+  color: #b5bfd2;
+  display: flex;
+  font-size: 1.5em;
+  gap: 5px;
+  h3 {
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    > div {
+      flex-direction: column;
+    }
+  }
+}
