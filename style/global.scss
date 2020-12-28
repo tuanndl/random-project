@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  --gray-color: #e9ebee;
+  --color-header-text: #24292e;
+  --color-text-link: #0366d6;
+  //   --black-color: #354052;
+  --black-color: black;
+
+  background-color: var(--gray-color);
+}
+
+a {
+  color: var(--color-text-link);
+  text-decoration: none;
+}
+
+.btn-sm {
+  padding: 3px 12px;
+  font-size: 12px;
+  line-height: 20px;
+  cursor: pointer;
+
+  :hover {
+    background-color: #f3f4f6;
+    border-color: rgba(27, 31, 35, 15%);
+    transition-duration: 0.1s;
+  }
+}

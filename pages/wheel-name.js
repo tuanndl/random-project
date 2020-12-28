@@ -1,16 +1,15 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import Head from "next/head";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
-import ActionCreator from "../redux/actionCreators";
+import ActionCreator from '../redux/actionCreators';
 
-import { WheelName, Header, Footer } from "../components";
+import { WheelName, Header, Footer, Head } from '../components';
 
 class Index extends Component {
   static async getInitialProps({ ctx }) {
     const { store, isServer } = ctx;
 
-    store.dispatch(ActionCreator.translationRequest("es"));
+    store.dispatch(ActionCreator.translationRequest('es'));
 
     return { isServer };
   }
@@ -19,29 +18,20 @@ class Index extends Component {
     const { dispatch, isServer, translate } = this.props;
 
     if (isServer && !translate) {
-      dispatch(ActionCreator.translationRequest("es"));
+      dispatch(ActionCreator.translationRequest('es'));
     }
   }
 
   render() {
     return (
       <Fragment>
-        <Head>
-          <title>My website</title>
-          <meta name="title" content="my website" />
-          <meta description="Here is the description" />
-          <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
-            rel="stylesheet"
-          ></link>
-        </Head>
+        <Head />
 
         <Header />
 
         <WheelName />
 
-        {/* <Footer /> */}
+        <Footer />
       </Fragment>
     );
   }

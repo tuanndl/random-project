@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import "./RandomNumber.scss";
+import './RandomNumber.scss';
 
 const randomNumber = (props) => {
   const [state, setState] = useState({ min: 1, max: 100 });
@@ -28,27 +28,29 @@ const randomNumber = (props) => {
   };
 
   return (
-    <div className="random--number">
-      <h3>Quay số ngẫu nhiên</h3>
-      <div className="random--div">
-        <label>Min:</label>
-        <input name="min" value={state.min} onChange={onChange} type="number" />
-      </div>
-      <div>
-        <label>Max:</label>
-        <input name="max" value={state.max} onChange={onChange} type="number" />
-      </div>
+    <div className='random-scope'>
+      <div className='random--number'>
+        <h3>Quay số ngẫu nhiên</h3>
+        <div className='random--div'>
+          <label>Min:</label>
+          <input name='min' value={state.min} onChange={onChange} type='number' />
+        </div>
+        <div>
+          <label>Max:</label>
+          <input name='max' value={state.max} onChange={onChange} type='number' />
+        </div>
 
-      <div>
-        <button className="btn-sm" onClick={random}>
-          Quay số
-        </button>
-      </div>
+        <div>
+          <button className='btn-sm' onClick={random}>
+            Quay số
+          </button>
+        </div>
 
-      <div>
-        <p className="result">
-          Kết quả: <span>{result !== null ? result : ""}</span>
-        </p>
+        <div>
+          <p className='result'>
+            Kết quả: <span>{result !== null ? result : ''}</span>
+          </p>
+        </div>
       </div>
     </div>
   );
