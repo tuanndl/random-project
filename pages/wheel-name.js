@@ -4,7 +4,7 @@ import Head from "next/head";
 
 import ActionCreator from "../redux/actionCreators";
 
-import { Home, Header, Footer } from "../components";
+import { WheelName, Header, Footer } from "../components";
 
 class Index extends Component {
   static async getInitialProps({ ctx }) {
@@ -39,7 +39,7 @@ class Index extends Component {
 
         <Header />
 
-        <Home />
+        <WheelName />
 
         {/* <Footer /> */}
       </Fragment>

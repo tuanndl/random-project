@@ -5,7 +5,7 @@
     "dev": "next",
     "dev1": "nodemon server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
@@ -14,12 +14,14 @@
     "next-redux-saga": "3.0.0",
     "next-redux-wrapper": "2.0.0",
     "node-sass": "^5.0.0",
+    "prize-wheel": "^0.0.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "5.0.7",
     "redux": "4.0.0",
     "redux-saga": "0.16.0",
-    "reduxsauce": "1.0.0"
+    "reduxsauce": "1.0.0",
+    "winwheel": "^1.0.1"
   },
   "devDependencies": {
     "nodemon": "1.18.4",
