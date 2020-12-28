@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createActions } from \"reduxsauce\";\nexport const {\n  Types,\n  Creators\n} = createActions({\n  translationRequest: [\"language\", \"mode\"],\n  translationSuccess: [\"translation\"],\n  translationFailure: [\"error\"]\n});\nexport default Creators;","map":null,"metadata":{},"sourceType":"module"}

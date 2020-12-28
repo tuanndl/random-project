@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { combineReducers } from \"redux\";\nimport translate from \"./translate\";\nconst rootReducer = combineReducers({\n  translate\n});\nexport default rootReducer;","map":null,"metadata":{},"sourceType":"module"}
