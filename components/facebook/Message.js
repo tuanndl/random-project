@@ -8,8 +8,8 @@ const MessengerChat = () => {
 
   return (
     <MessengerCustomerChat
-      pageId={393774084801224}
-      appId={104479844915184}
+      pageId={104479844915184}
+      appId={393774084801224}
       htmlRef={router.pathname}
       language={lang}
       minimized

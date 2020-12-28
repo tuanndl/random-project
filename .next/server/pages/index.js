@@ -1476,8 +1476,8 @@ const MessengerChat = () => {
   const router = Object(router_["useRouter"])();
   const lang = 'vi_VN';
   return Message_jsx(external_react_messenger_customer_chat_default.a, {
-    pageId: 393774084801224,
-    appId: 104479844915184,
+    pageId: 104479844915184,
+    appId: 393774084801224,
     htmlRef: router.pathname,
     language: lang,
     minimized: true
