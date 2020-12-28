@@ -5,6 +5,7 @@ dist
 coverage
 apidoc
 
+.next/
 
 .idea/
 npm-debug.log*
