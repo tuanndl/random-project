@@ -1,4 +1,4 @@
-export { default as Home } from "./Home";
-export * from "./footer";
-export * from "./header";
-export * from "./random";
+export {default as Home} from './Home'
+export * from './Footer'
+export * from './header'
+export * from './random'
