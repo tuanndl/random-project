@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
     "@zeit/next-sass": "^1.0.1",
     "express": "4.16.3",
     "next": "latest",

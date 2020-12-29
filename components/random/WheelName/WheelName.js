@@ -1,41 +1,69 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// import PrizeWheel from "prize-wheel";
-import Winwheel from 'winwheel';
+import { RandomWheelName } from '../../../utils';
+
+import './WheelName.scss';
+
+const colors = ['#3369E8', '#D61026', '#EEB213', '#029926'];
 
 const WheelName = (props) => {
-  // let theWheel = new Winwheel({
-  //   numSegments: 8, // Number of segments
-  //   outerRadius: 212, // The size of the wheel.
-  //   centerX: 217, // Used to position on the background correctly.
-  //   centerY: 219,
-  //   textFontSize: 28, // Font size.
-  //   // Definition of all the segments.
-  //   segments: [
-  //     { fillStyle: '#eae56f', text: 'Prize 1' },
-  //     { fillStyle: '#89f26e', text: 'Prize 2' },
-  //     { fillStyle: '#7de6ef', text: 'Prize 3' },
-  //     { fillStyle: '#e7706f', text: 'Prize 4' },
-  //     { fillStyle: '#eae56f', text: 'Prize 5' },
-  //     { fillStyle: '#89f26e', text: 'Prize 6' },
-  //     { fillStyle: '#7de6ef', text: 'Prize 7' },
-  //     { fillStyle: '#e7706f', text: 'Prize 8' },
-  //   ],
-  //   // Definition of the animation
-  //   animation: {
-  //     type: 'spinToStop',
-  //     duration: 5,
-  //     spins: 8,
-  //     callbackFinished: alertPrize,
-  //   },
-  // });
+  console.log('RandomWheelName', RandomWheelName);
 
-  // function alertPrize(indicatedSegment) {
-  //   // Do basic alert of the segment text.
-  //   alert('You have won ' + indicatedSegment.text);
-  // }
+  const [wheel, setWheel] = useState('');
+  const [names, setName] = useState('');
+  const [options, setOptions] = useState({
+    el: '#wheel', // Canvas ID
+    members: [], // Array of members
+    colors: [], // Background color of each member
+    radius: 250, // wheel radius
+  });
 
-  return <canvas id='canvas'></canvas>;
+  useEffect(() => {
+    const random = new RandomWheelName(options);
+    random.init();
+    setWheel(random);
+  }, [options]);
+
+  const convertValue = (value) => {
+    if (!value) {
+      return setOptions((prev) => ({ ...prev, members: [], colors: [] }));
+    }
+
+    const arr = value.split('\n');
+
+    let temp = arr.map((_, index) => colors[index % 4]);
+
+    for (let i = 0; i < arr.length; i++) {
+      if (!arr[i]) {
+        arr.splice(i, 1);
+        --i;
+      }
+    }
+
+    setOptions((prev) => ({ ...prev, members: arr, colors: temp }));
+  };
+
+  const onChange = (e) => {
+    const { value } = e.target;
+    convertValue(value);
+    setName(value);
+  };
+
+  const onWheel = () => {
+    wheel.spin(function (member) {
+      alert(member);
+    });
+  };
+
+  return (
+    <div className='random-wheel'>
+      <div>
+        <canvas id='wheel'></canvas>
+        <button onClick={onWheel}>QUAY</button>
+      </div>
+      <textarea className='textarea' name={'name'} value={names} onChange={onChange}></textarea>
+    </div>
+  );
 };
 
 WheelName.propTypes = {};

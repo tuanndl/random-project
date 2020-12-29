@@ -1,0 +1,12 @@
+.random-wheel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 150px);
+
+  .textarea {
+    height: 300px;
+    padding: 5px;
+    line-height: 20px;
+  }
+}

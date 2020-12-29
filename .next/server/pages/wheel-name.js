@@ -537,13 +537,6 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
-/***/ "DvMr":
-/***/ (function(module, exports) {
-
-module.exports = require("winwheel");
-
-/***/ }),
-
 /***/ "H9t6":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1282,6 +1275,169 @@ function mitt() {
 
 /***/ }),
 
+/***/ "dnVQ":
+/***/ (function(module, exports, __webpack_require__) {
+
+(function (root) {
+  'use strict';
+
+  function _merge(obj1, obj2) {
+    var obj3 = {};
+
+    for (var attrname in obj1) {
+      obj3[attrname] = obj1[attrname];
+    }
+
+    for (var attrname in obj2) {
+      obj3[attrname] = obj2[attrname];
+    }
+
+    return obj3;
+  }
+
+  var PrizeWheel = function (options) {
+    var _this = this,
+        defaults,
+        s,
+        ctx,
+        canvas;
+
+    defaults = {
+      el: null,
+      members: ['Member 1', 'Member 2', 'Member 3', 'Member 4'],
+      colors: ['#C7181D', '#FCB937', '#A1B836', '#371979', '#C7181D', '#FCB937', '#A1B836', '#371979'],
+      radius: 250,
+      startAngle: 0,
+      textRadius: 160
+    }; // s for settings
+
+    s = _merge(defaults, options);
+    s.width = s.height = s.radius * 2;
+    s.insideRadius = s.width / 9;
+    s.outsideRadius = s.width / 2 - 10;
+    s.startAngle = s.startAngle === 'random' ? Math.floor(Math.random() * 360) : s.startAngle;
+    s.arc = Math.PI / (s.members.length / (s.members.length / (s.members.length / 2)));
+    s.spinTimeout = null;
+    s.spinTime = 0;
+    s.spinTimeTotal = 0;
+    s.spinAngleStart = null;
+
+    this.draw = function () {
+      var angle, text, i;
+      canvas = document.querySelector(s.el);
+      canvas.width = s.width;
+      canvas.height = s.height;
+
+      if (canvas.getContext) {
+        ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, s.width, s.height);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.font = '16px sans-serif';
+
+        for (i = 0; i < s.members.length; i++) {
+          angle = s.startAngle + i * s.arc;
+          ctx.fillStyle = s.colors[i];
+          ctx.beginPath();
+          ctx.arc(s.width / 2, s.height / 2, s.outsideRadius, angle, angle + s.arc, false);
+          ctx.arc(s.width / 2, s.height / 2, s.insideRadius, angle + s.arc, angle, true);
+          ctx.stroke();
+          ctx.fill();
+          ctx.save();
+          ctx.shadowOffsetX = -1;
+          ctx.shadowOffsetY = -1;
+          ctx.shadowBlur = 0;
+          ctx.fillStyle = 'black';
+          ctx.translate(s.width / 2 + Math.cos(angle + s.arc / 2) * s.textRadius, s.height / 2 + Math.sin(angle + s.arc / 2) * s.textRadius);
+          ctx.rotate(s.angle + s.arc / 2 + Math.PI / 2);
+          text = s.members[i];
+          ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+          ctx.restore();
+        } //Arrow
+
+
+        ctx.fillStyle = 'black';
+        ctx.beginPath();
+        ctx.moveTo(s.radius - 4, s.radius - (s.outsideRadius + 5));
+        ctx.lineTo(s.radius + 4, s.radius - (s.outsideRadius + 5));
+        ctx.lineTo(s.radius + 4, s.radius - (s.outsideRadius - 5));
+        ctx.lineTo(s.radius + 9, s.radius - (s.outsideRadius - 5));
+        ctx.lineTo(s.radius + 0, s.radius - (s.outsideRadius - 13));
+        ctx.lineTo(s.radius - 9, s.radius - (s.outsideRadius - 5));
+        ctx.lineTo(s.radius - 4, s.radius - (s.outsideRadius - 5));
+        ctx.lineTo(s.radius - 4, s.radius - (s.outsideRadius + 5));
+        ctx.fill();
+      }
+    };
+
+    this.easeOut = function (t, b, c, d) {
+      var ts, tc;
+      ts = (t /= d) * t;
+      tc = ts * t;
+      return b + c * (tc + -3 * ts + 3 * t);
+    };
+
+    this.rotate = function () {
+      var spinAngle;
+      s.spinTime += 30;
+
+      if (s.spinTime + 5000 >= s.spinTimeTotal) {
+        _this.stop();
+
+        return;
+      }
+
+      spinAngle = s.spinAngleStart - _this.easeOut(s.spinTime, 0, s.spinAngleStart, s.spinTimeTotal);
+      s.startAngle += spinAngle * Math.PI / 180;
+
+      _this.draw();
+
+      s.spinTimeout = setTimeout(_this.rotate, 30);
+    };
+
+    this.spin = function (cb) {
+      _this.cb = cb;
+      s.spinAngleStart = Math.random() * 10 + 10;
+      s.spinTime = 0;
+      s.spinTimeTotal = Math.random() * 3 + 4 * 3000;
+
+      _this.rotate();
+    };
+
+    this.stop = function () {
+      var degrees;
+      var arcd;
+      var index;
+      clearTimeout(s.spinTimeout);
+      degrees = s.startAngle * 180 / Math.PI + 90;
+      arcd = s.arc * 180 / Math.PI;
+      index = Math.floor((360 - degrees % 360) / arcd);
+      ctx.save();
+
+      _this.done(s.members[index]);
+    };
+
+    this.done = function (member) {
+      _this.cb(member);
+    };
+
+    return {
+      init: _this.draw,
+      spin: _this.spin
+    };
+  };
+
+  if (true) {
+    if ( true && module.exports) {
+      exports = module.exports = PrizeWheel;
+    }
+
+    exports.PrizeWheel = PrizeWheel;
+  } else {}
+})(this);
+
+/***/ }),
+
 /***/ "e+cM":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1292,7 +1448,7 @@ __webpack_require__.d(__webpack_exports__, "d", function() { return /* reexport 
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* reexport */ components_Footer_Footer; });
 __webpack_require__.d(__webpack_exports__, "c", function() { return /* reexport */ header_Header; });
 __webpack_require__.d(__webpack_exports__, "b", function() { return /* reexport */ Head; });
-__webpack_require__.d(__webpack_exports__, "e", function() { return /* reexport */ WheelName_WheelName; });
+__webpack_require__.d(__webpack_exports__, "e", function() { return /* reexport */ random_WheelName_WheelName; });
 
 // UNUSED EXPORTS: RandomNumber, MessengerChat
 
@@ -1386,51 +1542,111 @@ const randomNumber = props => {
 };
 
 /* harmony default export */ var Number_RandomNumber = (randomNumber);
-// EXTERNAL MODULE: external "winwheel"
-var external_winwheel_ = __webpack_require__("DvMr");
+// EXTERNAL MODULE: ./utils/randomWheel.js
+var randomWheel = __webpack_require__("dnVQ");
+var randomWheel_default = /*#__PURE__*/__webpack_require__.n(randomWheel);
+
+// CONCATENATED MODULE: ./utils/index.js
+
+// EXTERNAL MODULE: ./components/random/WheelName/WheelName.scss
+var WheelName = __webpack_require__("wneg");
 
 // CONCATENATED MODULE: ./components/random/WheelName/WheelName.js
 var WheelName_jsx = external_react_default.a.createElement;
 
-// import PrizeWheel from "prize-wheel";
+function WheelName_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function WheelName_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { WheelName_ownKeys(Object(source), true).forEach(function (key) { WheelName_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { WheelName_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function WheelName_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-const WheelName = props => {
-  // let theWheel = new Winwheel({
-  //   numSegments: 8, // Number of segments
-  //   outerRadius: 212, // The size of the wheel.
-  //   centerX: 217, // Used to position on the background correctly.
-  //   centerY: 219,
-  //   textFontSize: 28, // Font size.
-  //   // Definition of all the segments.
-  //   segments: [
-  //     { fillStyle: '#eae56f', text: 'Prize 1' },
-  //     { fillStyle: '#89f26e', text: 'Prize 2' },
-  //     { fillStyle: '#7de6ef', text: 'Prize 3' },
-  //     { fillStyle: '#e7706f', text: 'Prize 4' },
-  //     { fillStyle: '#eae56f', text: 'Prize 5' },
-  //     { fillStyle: '#89f26e', text: 'Prize 6' },
-  //     { fillStyle: '#7de6ef', text: 'Prize 7' },
-  //     { fillStyle: '#e7706f', text: 'Prize 8' },
-  //   ],
-  //   // Definition of the animation
-  //   animation: {
-  //     type: 'spinToStop',
-  //     duration: 5,
-  //     spins: 8,
-  //     callbackFinished: alertPrize,
-  //   },
-  // });
-  // function alertPrize(indicatedSegment) {
-  //   // Do basic alert of the segment text.
-  //   alert('You have won ' + indicatedSegment.text);
-  // }
-  return WheelName_jsx("canvas", {
-    id: "canvas"
+
+
+const colors = ['#3369E8', '#D61026', '#EEB213', '#029926'];
+
+const WheelName_WheelName = props => {
+  console.log('RandomWheelName', randomWheel_default.a);
+  const {
+    0: wheel,
+    1: setWheel
+  } = Object(external_react_["useState"])('');
+  const {
+    0: names,
+    1: setName
+  } = Object(external_react_["useState"])('');
+  const {
+    0: options,
+    1: setOptions
+  } = Object(external_react_["useState"])({
+    el: '#wheel',
+    // Canvas ID
+    members: [],
+    // Array of members
+    colors: [],
+    // Background color of each member
+    radius: 250 // wheel radius
+
   });
+  Object(external_react_["useEffect"])(() => {
+    const random = new randomWheel_default.a(options);
+    random.init();
+    setWheel(random);
+  }, [options]);
+
+  const convertValue = value => {
+    if (!value) {
+      return setOptions(prev => WheelName_objectSpread(WheelName_objectSpread({}, prev), {}, {
+        members: [],
+        colors: []
+      }));
+    }
+
+    const arr = value.split('\n');
+    let temp = arr.map((_, index) => colors[index % 4]);
+
+    for (let i = 0; i < arr.length; i++) {
+      if (!arr[i]) {
+        arr.splice(i, 1);
+        --i;
+      }
+    }
+
+    setOptions(prev => WheelName_objectSpread(WheelName_objectSpread({}, prev), {}, {
+      members: arr,
+      colors: temp
+    }));
+  };
+
+  const onChange = e => {
+    const {
+      value
+    } = e.target;
+    convertValue(value);
+    setName(value);
+  };
+
+  const onWheel = () => {
+    wheel.spin(function (member) {
+      alert(member);
+    });
+  };
+
+  return WheelName_jsx("div", {
+    className: "random-wheel"
+  }, WheelName_jsx("div", null, WheelName_jsx("canvas", {
+    id: "wheel"
+  }), WheelName_jsx("button", {
+    onClick: onWheel
+  }, "QUAY")), WheelName_jsx("textarea", {
+    className: "textarea",
+    name: 'name',
+    value: names,
+    onChange: onChange
+  }));
 };
 
-/* harmony default export */ var WheelName_WheelName = (WheelName);
+/* harmony default export */ var random_WheelName_WheelName = (WheelName_WheelName);
 // CONCATENATED MODULE: ./components/random/index.js
 
 
@@ -3070,6 +3286,13 @@ function createObserver(options) {
 "use strict";
 exports.__esModule=true;exports.normalizePathSep=normalizePathSep;exports.denormalizePagePath=denormalizePagePath;function normalizePathSep(path){return path.replace(/\\/g,'/');}function denormalizePagePath(page){page=normalizePathSep(page);if(page.startsWith('/index/')){page=page.slice(6);}else if(page==='/index'){page='/';}return page;}
 //# sourceMappingURL=denormalize-page-path.js.map
+
+/***/ }),
+
+/***/ "wneg":
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 

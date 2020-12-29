@@ -57,6 +57,16 @@ a {
       padding: 2px;
       background-color: #ccccff; }
 
+.random-wheel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 150px); }
+  .random-wheel .textarea {
+    height: 300px;
+    padding: 5px;
+    line-height: 20px; }
+
 .footer {
   background-color: #fff;
   width: 100%;
