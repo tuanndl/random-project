@@ -94,6 +94,13 @@ a {
     .footer > div {
       flex-direction: column; } }
 
+.menu--active {
+  color: green; }
+
+.menu--link {
+  text-decoration: none;
+  font-weight: bold; }
+
 .box--center {
   display: flex !important;
   justify-content: center;

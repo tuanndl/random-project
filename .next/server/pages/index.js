@@ -519,13 +519,6 @@ const {
 
 /***/ }),
 
-/***/ "K2gz":
-/***/ (function(module, exports) {
-
-module.exports = require("classnames");
-
-/***/ }),
-
 /***/ "KKbo":
 /***/ (function(module, exports) {
 
@@ -811,6 +804,13 @@ exports.default = _default;
 /***/ (function(module, exports) {
 
 module.exports = require("next/dist/next-server/lib/router-context.js");
+
+/***/ }),
+
+/***/ "PBDo":
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 
@@ -1812,9 +1812,8 @@ var Code_default = /*#__PURE__*/__webpack_require__.n(Code_);
 var next_link = __webpack_require__("YFqc");
 var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 
-// EXTERNAL MODULE: external "classnames"
-var external_classnames_ = __webpack_require__("K2gz");
-var external_classnames_default = /*#__PURE__*/__webpack_require__.n(external_classnames_);
+// EXTERNAL MODULE: ./components/header/Header.scss
+var Header = __webpack_require__("PBDo");
 
 // CONCATENATED MODULE: ./components/header/Header.js
 var Header_jsx = external_react_default.a.createElement;
@@ -1838,13 +1837,6 @@ const useStyles = Object(styles_["makeStyles"])(theme => ({
   title: {
     flexGrow: 1,
     fontWeight: 'bold'
-  },
-  link: {
-    textDecoration: 'none',
-    fontWeight: 'bold'
-  },
-  active: {
-    color: 'green'
   }
 }));
 function ButtonAppBar() {
@@ -1852,15 +1844,17 @@ function ButtonAppBar() {
   const router = Object(router_["useRouter"])();
 
   const funcActiveClass = pathname => {
-    console.log();
-
     switch (true) {
       case router.pathname === pathname:
-        return classes.active;
+        return 'menu--active';
 
       default:
         return '';
     }
+  };
+
+  const onLogin = () => {
+    alert('Tính năng đang phát triển');
   };
 
   return Header_jsx("div", {
@@ -1876,25 +1870,28 @@ function ButtonAppBar() {
   }, "TOOLS nhanh"), Header_jsx(Button_default.a, {
     color: "inherit"
   }, Header_jsx(link_default.a, {
+    href: "/"
+  }, Header_jsx("span", {
+    className: `menu--link ${funcActiveClass('/')}`
+  }, "Quay S\u1ED1"))), Header_jsx(Button_default.a, {
+    color: "inherit"
+  }, Header_jsx(link_default.a, {
     href: "/cham-ngon"
   }, Header_jsx("span", {
-    className: external_classnames_default()(classes.link, funcActiveClass('/cham-ngon'))
+    className: `menu--link ${funcActiveClass('/cham-ngon')}`
   }, "Ch\xE2m ng\xF4n"))), Header_jsx(Button_default.a, {
     color: "inherit"
   }, Header_jsx(link_default.a, {
     href: "/wheel-name"
   }, Header_jsx("span", {
-    className: external_classnames_default()(classes.link, funcActiveClass('/wheel-name'))
+    className: `menu--link ${funcActiveClass('/wheel-name')}`
   }, "V\xF2ng Quay"))), Header_jsx(Button_default.a, {
-    color: "inherit"
-  }, Header_jsx(link_default.a, {
-    href: "/"
-  }, Header_jsx("span", {
-    className: external_classnames_default()(classes.link, funcActiveClass('/'))
-  }, "Quay S\u1ED1"))), Header_jsx(Button_default.a, {
     color: "inherit",
-    className: classes.link
-  }, "Login"))));
+    className: "menu--link"
+  }, Header_jsx("span", {
+    className: `menu--link`,
+    onClick: onLogin
+  }, "Login")))));
 }
 // CONCATENATED MODULE: ./components/header/index.js
 

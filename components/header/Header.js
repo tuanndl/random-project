@@ -7,7 +7,8 @@ import CodeIcon from '@material-ui/icons/Code';
 import Link from 'next/link';
 import React from 'react';
 import { useRouter } from 'next/router';
-import classNames from 'classnames';
+
+import './Header.scss';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,13 +21,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     fontWeight: 'bold',
   },
-  link: {
-    textDecoration: 'none',
-    fontWeight: 'bold',
-  },
-  active: {
-    color: 'green',
-  },
 }));
 
 export default function ButtonAppBar() {
@@ -34,13 +28,16 @@ export default function ButtonAppBar() {
   const router = useRouter();
 
   const funcActiveClass = (pathname) => {
-    console.log();
     switch (true) {
       case router.pathname === pathname:
-        return classes.active;
+        return 'menu--active';
       default:
         return '';
     }
+  };
+
+  const onLogin = () => {
+    alert('Tính năng đang phát triển');
   };
 
   return (
@@ -54,29 +51,27 @@ export default function ButtonAppBar() {
           </Typography>
 
           <Button color='inherit'>
+            <Link href='/'>
+              <span className={`menu--link ${funcActiveClass('/')}`}>Quay Số</span>
+            </Link>
+          </Button>
+
+          <Button color='inherit'>
             <Link href='/cham-ngon'>
-              <span className={classNames(classes.link, funcActiveClass('/cham-ngon'))}>
-                Châm ngôn
-              </span>
+              <span className={`menu--link ${funcActiveClass('/cham-ngon')}`}>Châm ngôn</span>
             </Link>
           </Button>
 
           <Button color='inherit'>
             <Link href='/wheel-name'>
-              <span className={classNames(classes.link, funcActiveClass('/wheel-name'))}>
-                Vòng Quay
-              </span>
+              <span className={`menu--link ${funcActiveClass('/wheel-name')}`}>Vòng Quay</span>
             </Link>
           </Button>
 
-          <Button color='inherit'>
-            <Link href='/'>
-              <span className={classNames(classes.link, funcActiveClass('/'))}>Quay Số</span>
-            </Link>
-          </Button>
-
-          <Button color='inherit' className={classes.link}>
-            Login
+          <Button color='inherit' className='menu--link'>
+            <span className={`menu--link`} onClick={onLogin}>
+              Login
+            </span>
           </Button>
         </Toolbar>
       </AppBar>
