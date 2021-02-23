@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default as Home } from './Home';\nexport * from './Footer';\nexport * from './header';\nexport * from './head';\nexport * from './random';\nexport * from './facebook';","map":null,"metadata":{},"sourceType":"module"}

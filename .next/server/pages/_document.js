@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -100,7 +100,7 @@ module.exports = require("styled-jsx/server");
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("VDXt");
@@ -453,6 +453,20 @@ class Head extends _react.Component {
     let {
       head
     } = this.context;
+    let cssPreloads = [];
+    let otherHeadElements = [];
+
+    if (head) {
+      head.forEach(c => {
+        if (c && c.type === 'link' && c.props['rel'] === 'preload' && c.props['as'] === 'style') {
+          cssPreloads.push(c);
+        } else {
+          c && otherHeadElements.push(c);
+        }
+      });
+      head = cssPreloads.concat(otherHeadElements);
+    }
+
     let children = this.props.children; // show a warning if Head contains <title> (only in development)
 
     if (false) {}
@@ -720,7 +734,7 @@ class NextScript extends _react.Component {
         return null;
       }
 
-      const ampDevFiles = [...buildManifest.devFiles, ...buildManifest.ampDevFiles];
+      const ampDevFiles = [...buildManifest.devFiles, ...buildManifest.polyfillFiles, ...buildManifest.ampDevFiles];
       return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, disableRuntimeJS ? null : /*#__PURE__*/_react.default.createElement("script", {
         id: "__NEXT_DATA__",
         type: "application/json",

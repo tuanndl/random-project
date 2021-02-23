@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default as ChamNgon } from './ChamNgon';","map":{"version":3,"sources":["/Users/macbook/Git/random-project/components/chamNgon/index.js"],"names":["default","ChamNgon"],"mappings":"AAAA,SAASA,OAAO,IAAIC,QAApB,QAAoC,YAApC","sourcesContent":["export { default as ChamNgon } from './ChamNgon';\n"]},"metadata":{},"sourceType":"module"}

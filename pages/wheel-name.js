@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import ActionCreator from '../redux/actionCreators';
 
-import { WheelName, Header, Footer, Head } from '../components';
+import { WheelName, Layout } from '../components';
 
 class Index extends Component {
   static async getInitialProps({ ctx }) {
@@ -24,15 +24,9 @@ class Index extends Component {
 
   render() {
     return (
-      <Fragment>
-        <Head />
-
-        <Header />
-
+      <Layout>
         <WheelName />
-
-        <Footer />
-      </Fragment>
+      </Layout>
     );
   }
 }

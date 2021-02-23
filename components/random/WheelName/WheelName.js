@@ -9,8 +9,8 @@ const colors = ['#3369E8', '#D61026', '#EEB213', '#029926'];
 const WheelName = (props) => {
   console.log('RandomWheelName', RandomWheelName);
 
-  const [wheel, setWheel] = useState('');
-  const [names, setName] = useState('');
+  const [wheel, setWheel] = useState();
+  const [names, setName] = useState('Trung\nTiên\nGiang\nTuyên');
   const [options, setOptions] = useState({
     el: '#wheel', // Canvas ID
     members: [], // Array of members
@@ -23,6 +23,10 @@ const WheelName = (props) => {
     random.init();
     setWheel(random);
   }, [options]);
+
+  useEffect(() => {
+    convertValue(names);
+  }, [names]);
 
   const convertValue = (value) => {
     if (!value) {
@@ -45,7 +49,6 @@ const WheelName = (props) => {
 
   const onChange = (e) => {
     const { value } = e.target;
-    convertValue(value);
     setName(value);
   };
 

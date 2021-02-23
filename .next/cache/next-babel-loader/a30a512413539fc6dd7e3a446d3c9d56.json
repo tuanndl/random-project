@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default as RandomWheelName } from './randomWheel';","map":{"version":3,"sources":["/Users/macbook/Git/random-project/utils/index.js"],"names":["default","RandomWheelName"],"mappings":"AAAA,SAASA,OAAO,IAAIC,eAApB,QAA2C,eAA3C","sourcesContent":["export { default as RandomWheelName } from './randomWheel';\n"]},"metadata":{},"sourceType":"module"}

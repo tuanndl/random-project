@@ -21,11 +21,6 @@ const Footer = (props) => {
                 <FaFacebook />
               </h3>
             </a>
-            <a href='https://www.facebook.com/min.5674193' target='__blank'>
-              <h3>
-                <FaInstagram />
-              </h3>
-            </a>
           </div>
         </div>
       </div>

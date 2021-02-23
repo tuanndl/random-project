@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default as RandomNumber } from \"./Number/RandomNumber\";\nexport { default as WheelName } from \"./WheelName/WheelName\";","map":null,"metadata":{},"sourceType":"module"}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default as Head } from './Head';","map":{"version":3,"sources":["/Users/macbook/Git/random-project/components/head/index.js"],"names":["default","Head"],"mappings":"AAAA,SAASA,OAAO,IAAIC,IAApB,QAAgC,QAAhC","sourcesContent":["export { default as Head } from './Head';\n"]},"metadata":{},"sourceType":"module"}

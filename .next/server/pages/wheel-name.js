@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -169,14 +169,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("A7eM");
-
-
-/***/ }),
-
 /***/ "284h":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -235,6 +227,14 @@ function _interopRequireWildcard(obj) {
 }
 
 module.exports = _interopRequireWildcard;
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("A7eM");
+
 
 /***/ }),
 
@@ -322,6 +322,13 @@ function normalizeLocalePath(pathname, locales) {
     detectedLocale
   };
 }
+
+/***/ }),
+
+/***/ "4151":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/AppBar");
 
 /***/ }),
 
@@ -477,6 +484,13 @@ module.exports = require("reduxsauce");
 
 /***/ }),
 
+/***/ "9Pu4":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
 /***/ "A7eM":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -521,7 +535,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   }
 
   render() {
-    return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* Head */ "b"], null), __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* Header */ "c"], null), __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* WheelName */ "e"], null), __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* Footer */ "a"], null));
+    return __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* Layout */ "f"], null, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* WheelName */ "g"], null));
   }
 
 }
@@ -555,6 +569,27 @@ const {
   translationFailure: ["error"]
 });
 /* harmony default export */ __webpack_exports__["b"] = (Creators);
+
+/***/ }),
+
+/***/ "K2gz":
+/***/ (function(module, exports) {
+
+module.exports = require("classnames");
+
+/***/ }),
+
+/***/ "KKbo":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core");
+
+/***/ }),
+
+/***/ "Ms0O":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Toolbar");
 
 /***/ }),
 
@@ -818,17 +853,17 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "OJ7u":
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "Osoz":
 /***/ (function(module, exports) {
 
 module.exports = require("next/dist/next-server/lib/router-context.js");
-
-/***/ }),
-
-/***/ "PBDo":
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 
@@ -860,10 +895,24 @@ module.exports = _interopRequireDefault;
 
 /***/ }),
 
+/***/ "UVoM":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Typography");
+
+/***/ }),
+
 /***/ "UhrY":
 /***/ (function(module, exports) {
 
 module.exports = require("next/dist/next-server/lib/router/utils/get-asset-path-from-route.js");
+
+/***/ }),
+
+/***/ "Wh1t":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Button");
 
 /***/ }),
 
@@ -1120,12 +1169,13 @@ function linkClicked(e, router, href, as, replace, shallow, scroll, locale) {
 
   router[replace ? 'replace' : 'push'](href, as, {
     shallow,
-    locale
+    locale,
+    scroll
   }).then(success => {
     if (!success) return;
 
     if (scroll) {
-      window.scrollTo(0, 0);
+      // FIXME: proper route announcing at Router level, not Link:
       document.body.focus();
     }
   });
@@ -1218,7 +1268,9 @@ function Link(props) {
 
 
   if (props.passHref || child.type === 'a' && !('href' in child.props)) {
-    childProps.href = (0, _router.addBasePath)((0, _router.addLocale)(as, typeof locale !== 'undefined' ? locale : router && router.locale, router && router.defaultLocale));
+    const curLocale = typeof locale !== 'undefined' ? locale : router && router.locale;
+    const localeDomain = (0, _router.getDomainLocale)(as, curLocale, router && router.locales, router && router.domainLocales);
+    childProps.href = localeDomain || (0, _router.addBasePath)((0, _router.addLocale)(as, curLocale, router && router.defaultLocale));
   }
 
   return /*#__PURE__*/_react.default.cloneElement(child, childProps);
@@ -1444,11 +1496,13 @@ function mitt() {
 "use strict";
 
 // EXPORTS
-__webpack_require__.d(__webpack_exports__, "d", function() { return /* reexport */ Home; });
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* reexport */ components_Footer_Footer; });
-__webpack_require__.d(__webpack_exports__, "c", function() { return /* reexport */ header_Header; });
-__webpack_require__.d(__webpack_exports__, "b", function() { return /* reexport */ Head; });
-__webpack_require__.d(__webpack_exports__, "e", function() { return /* reexport */ random_WheelName_WheelName; });
+__webpack_require__.d(__webpack_exports__, "e", function() { return /* reexport */ Home; });
+__webpack_require__.d(__webpack_exports__, "b", function() { return /* reexport */ components_Footer_Footer; });
+__webpack_require__.d(__webpack_exports__, "d", function() { return /* reexport */ ButtonAppBar; });
+__webpack_require__.d(__webpack_exports__, "c", function() { return /* reexport */ Head; });
+__webpack_require__.d(__webpack_exports__, "g", function() { return /* reexport */ random_WheelName_WheelName; });
+__webpack_require__.d(__webpack_exports__, "f", function() { return /* reexport */ layout_Layout; });
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* reexport */ chamNgon_ChamNgon; });
 
 // UNUSED EXPORTS: RandomNumber, MessengerChat
 
@@ -1570,11 +1624,11 @@ const WheelName_WheelName = props => {
   const {
     0: wheel,
     1: setWheel
-  } = Object(external_react_["useState"])('');
+  } = Object(external_react_["useState"])();
   const {
     0: names,
     1: setName
-  } = Object(external_react_["useState"])('');
+  } = Object(external_react_["useState"])('Trung\nTiên\nGiang\nTuyên');
   const {
     0: options,
     1: setOptions
@@ -1593,6 +1647,9 @@ const WheelName_WheelName = props => {
     random.init();
     setWheel(random);
   }, [options]);
+  Object(external_react_["useEffect"])(() => {
+    convertValue(names);
+  }, [names]);
 
   const convertValue = value => {
     if (!value) {
@@ -1622,7 +1679,6 @@ const WheelName_WheelName = props => {
     const {
       value
     } = e.target;
-    convertValue(value);
     setName(value);
   };
 
@@ -1723,21 +1779,42 @@ const Footer_Footer = props => {
   }, Footer_jsx("a", {
     href: "https://www.facebook.com/Tools-Nhanh-104479844915184",
     target: "__blank"
-  }, Footer_jsx("h3", null, Footer_jsx(fa_["FaFacebook"], null))), Footer_jsx("a", {
-    href: "https://www.facebook.com/min.5674193",
-    target: "__blank"
-  }, Footer_jsx("h3", null, Footer_jsx(fa_["FaInstagram"], null)))))), Footer_jsx(Message, null));
+  }, Footer_jsx("h3", null, Footer_jsx(fa_["FaFacebook"], null)))))), Footer_jsx(Message, null));
 };
 
 /* harmony default export */ var components_Footer_Footer = (Footer_Footer);
 // CONCATENATED MODULE: ./components/Footer/index.js
 
+// EXTERNAL MODULE: external "@material-ui/core/AppBar"
+var AppBar_ = __webpack_require__("4151");
+var AppBar_default = /*#__PURE__*/__webpack_require__.n(AppBar_);
+
+// EXTERNAL MODULE: external "@material-ui/core/Button"
+var Button_ = __webpack_require__("Wh1t");
+var Button_default = /*#__PURE__*/__webpack_require__.n(Button_);
+
+// EXTERNAL MODULE: external "@material-ui/core/styles"
+var styles_ = __webpack_require__("9Pu4");
+
+// EXTERNAL MODULE: external "@material-ui/core/Toolbar"
+var Toolbar_ = __webpack_require__("Ms0O");
+var Toolbar_default = /*#__PURE__*/__webpack_require__.n(Toolbar_);
+
+// EXTERNAL MODULE: external "@material-ui/core/Typography"
+var Typography_ = __webpack_require__("UVoM");
+var Typography_default = /*#__PURE__*/__webpack_require__.n(Typography_);
+
+// EXTERNAL MODULE: external "@material-ui/icons/Code"
+var Code_ = __webpack_require__("n9Bu");
+var Code_default = /*#__PURE__*/__webpack_require__.n(Code_);
+
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__("YFqc");
 var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 
-// EXTERNAL MODULE: ./components/header/Header.scss
-var Header = __webpack_require__("PBDo");
+// EXTERNAL MODULE: external "classnames"
+var external_classnames_ = __webpack_require__("K2gz");
+var external_classnames_default = /*#__PURE__*/__webpack_require__.n(external_classnames_);
 
 // CONCATENATED MODULE: ./components/header/Header.js
 var Header_jsx = external_react_default.a.createElement;
@@ -1745,28 +1822,80 @@ var Header_jsx = external_react_default.a.createElement;
 
 
 
-const Header_Header = props => {
-  return Header_jsx("div", {
-    className: "header"
-  }, Header_jsx("div", {
-    className: "header--left"
-  }, "TOOLS"), Header_jsx("nav", {
-    className: "header--center"
-  }, Header_jsx(link_default.a, {
-    className: "header-link",
-    href: "/"
-  }, Header_jsx("a", {
-    className: "header-link"
-  }, "Quay S\u1ED1")), Header_jsx(link_default.a, {
-    href: "/wheel-name"
-  }, Header_jsx("a", {
-    className: "header-link"
-  }, "V\xF2ng Quay"))), Header_jsx("div", {
-    className: "header--right"
-  }));
-};
 
-/* harmony default export */ var header_Header = (Header_Header);
+
+
+
+
+
+const useStyles = Object(styles_["makeStyles"])(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1,
+    fontWeight: 'bold'
+  },
+  link: {
+    textDecoration: 'none',
+    fontWeight: 'bold'
+  },
+  active: {
+    color: 'green'
+  }
+}));
+function ButtonAppBar() {
+  const classes = useStyles();
+  const router = Object(router_["useRouter"])();
+
+  const funcActiveClass = pathname => {
+    console.log();
+
+    switch (true) {
+      case router.pathname === pathname:
+        return classes.active;
+
+      default:
+        return '';
+    }
+  };
+
+  return Header_jsx("div", {
+    className: classes.root
+  }, Header_jsx(AppBar_default.a, {
+    color: "default",
+    position: "static"
+  }, Header_jsx(Toolbar_default.a, null, Header_jsx(Code_default.a, {
+    className: classes.menuButton
+  }), Header_jsx(Typography_default.a, {
+    variant: "h6",
+    className: classes.title
+  }, "TOOLS nhanh"), Header_jsx(Button_default.a, {
+    color: "inherit"
+  }, Header_jsx(link_default.a, {
+    href: "/cham-ngon"
+  }, Header_jsx("span", {
+    className: external_classnames_default()(classes.link, funcActiveClass('/cham-ngon'))
+  }, "Ch\xE2m ng\xF4n"))), Header_jsx(Button_default.a, {
+    color: "inherit"
+  }, Header_jsx(link_default.a, {
+    href: "/wheel-name"
+  }, Header_jsx("span", {
+    className: external_classnames_default()(classes.link, funcActiveClass('/wheel-name'))
+  }, "V\xF2ng Quay"))), Header_jsx(Button_default.a, {
+    color: "inherit"
+  }, Header_jsx(link_default.a, {
+    href: "/"
+  }, Header_jsx("span", {
+    className: external_classnames_default()(classes.link, funcActiveClass('/'))
+  }, "Quay S\u1ED1"))), Header_jsx(Button_default.a, {
+    color: "inherit",
+    className: classes.link
+  }, "Login"))));
+}
 // CONCATENATED MODULE: ./components/header/index.js
 
 // EXTERNAL MODULE: external "next/head"
@@ -1796,7 +1925,46 @@ const MyHead = props => {
 /* harmony default export */ var Head = (MyHead);
 // CONCATENATED MODULE: ./components/head/index.js
 
+// CONCATENATED MODULE: ./components/layout/Layout.js
+var Layout_jsx = external_react_default.a.createElement;
+
+
+
+const Layout = props => {
+  return Layout_jsx(external_react_["Fragment"], null, Layout_jsx(Head, null), Layout_jsx(ButtonAppBar, null), props.children, Layout_jsx(components_Footer_Footer, null));
+};
+
+/* harmony default export */ var layout_Layout = (Layout);
+// CONCATENATED MODULE: ./components/layout/index.js
+
+// EXTERNAL MODULE: external "@material-ui/core"
+var core_ = __webpack_require__("KKbo");
+
+// EXTERNAL MODULE: ./components/chamNgon/ChamNgon.scss
+var ChamNgon = __webpack_require__("OJ7u");
+
+// CONCATENATED MODULE: ./components/chamNgon/ChamNgon.js
+var ChamNgon_jsx = external_react_default.a.createElement;
+
+
+
+
+class ChamNgon_Index extends external_react_["Component"] {
+  render() {
+    return ChamNgon_jsx(core_["Container"], {
+      maxWidth: "sm",
+      className: "box--center"
+    }, ChamNgon_jsx("ul", null, ChamNgon_jsx("li", null, "L\xFAc n\xE0y n\u1EBFu ng\u1EE7 b\u1EA1n s\u1EBD c\xF3 m\u1ED9t gi\u1EA5c m\u01A1, nh\u01B0ng l\xFAc n\xE0y n\u1EBFu h\u1ECDc b\u1EA1n s\u1EBD gi\u1EA3i th\xEDch \u0111\u01B0\u1EE3c \u01B0\u1EDBc m\u01A1."), ChamNgon_jsx("li", null, "Ng\xE0y h\xF4m nay n\u1EBFu b\u1EA1n l\xE3ng ph\xED, \u0111\u1ED3ng ngh\u0129a v\u1EDBi vi\u1EC7c b\u1EA1n b\xF3p c.h\u1EBFt qu\xE1 kh\u1EE9 v\xE0 v\u1EE9t b\u1ECF ng\xE0y mai."), ChamNgon_jsx("li", null, "Khi n\xE0o b\u1EA1n c\u1EA3m th\u1EA5y th\u1EDDi kh\u1EAFc \u0111\xE3 mu\u1ED9n, khi \u0111\xF3 th\u1EF1c s\u1EF1 l\xE0 th\u1EDDi \u0111i\u1EC3m h\xE0nh \u0111\u1ED9ng. "), ChamNgon_jsx("li", null, "S\u1EF1 kh\u1ED5 nh\u1ECDc khi h\u1ECDc ch\u1EC9 l\xE0 t\u1EA1m th\u1EDDi, s\u1EF1 \u0111au kh\u1ED5 v\xEC kh\xF4ng h\u1ECDc \u0111\u1EBFn n\u01A1i l\xE0 m\xE3i m\xE3i."), ChamNgon_jsx("li", null, "H\u1EA1nh ph\xFAc c\xF3 l\u1EBD kh\xF4ng c\xF3 th\u1EE9 l\u01B0\u1EE3t, nh\u01B0ng th\xE0nh c\xF4ng th\xEC c\xF3."), ChamNgon_jsx("li", null, "H\u1ECDc t\u1EADp ph\u1EA3i ch\u0103ng l\xE0 nhi\u1EC7m v\u1EE5 c\u1EA3 \u0111\u1EDDi, ngay c\u1EA3 ng\u01B0\u1EDDi h\u1ECDc c\u0169ng kh\xF4ng th\u1EC3 ch\u1EE9ng minh, c\xF2n c\xF3 th\u1EC3 l\xE0m g\xEC?"), ChamNgon_jsx("li", null, "H\xE3y \u0111\xF3n nh\u1EADn s\u1EF1 kh\xF3 nh\u1ECDc kh\xF4ng th\u1EC3 ch\u1ED1i t\u1EEB."), ChamNgon_jsx("li", null, "N\u01B0\u1EDBc b\u1ECDt hi\u1EC7n t\u1EA1i s\u1EBD l\xE0 n\u01B0\u1EDBc m\u1EAFt c\u1EE7a ng\xE0y mai."), ChamNgon_jsx("li", null, "Ng\u01B0\u1EDDi \u0111\u1EA7u t\u01B0 cho t\u01B0\u01A1ng lai, l\xE0 ng\u01B0\u1EDDi th\u1EF1c hi\u1EC7n \u0111\u1EBFn c\xF9ng.")));
+  }
+
+}
+
+/* harmony default export */ var chamNgon_ChamNgon = (ChamNgon_Index);
+// CONCATENATED MODULE: ./components/chamNgon/index.js
+
 // CONCATENATED MODULE: ./components/index.js
+
+
 
 
 
@@ -1813,6 +1981,7 @@ const MyHead = props => {
 
 
 exports.__esModule = true;
+exports.getDomainLocale = getDomainLocale;
 exports.addLocale = addLocale;
 exports.delLocale = delLocale;
 exports.hasBasePath = hasBasePath;
@@ -1835,8 +2004,6 @@ var _mitt = _interopRequireDefault(__webpack_require__("dZ6Y"));
 
 var _utils = __webpack_require__("g/15");
 
-var _escapePathDelimiters = _interopRequireDefault(__webpack_require__("fcRV"));
-
 var _isDynamic = __webpack_require__("/jkW");
 
 var _parseRelativeUrl = __webpack_require__("hS4m");
@@ -1858,6 +2025,10 @@ function _interopRequireDefault(obj) {
 // tslint:disable:no-console
 
 
+let detectDomainLocale;
+
+if (false) {}
+
 const basePath =  false || '';
 
 function buildCancellationError() {
@@ -1867,7 +2038,13 @@ function buildCancellationError() {
 }
 
 function addPathPrefix(path, prefix) {
-  return prefix && path.startsWith('/') ? path === '/' ? (0, _normalizeTrailingSlash.normalizePathTrailingSlash)(prefix) : `${prefix}${path}` : path;
+  return prefix && path.startsWith('/') ? path === '/' ? (0, _normalizeTrailingSlash.normalizePathTrailingSlash)(prefix) : `${prefix}${pathNoQueryHash(path) === '/' ? path.substring(1) : path}` : path;
+}
+
+function getDomainLocale(path, locale, locales, domainLocales) {
+  if (false) {}
+
+  return false;
 }
 
 function addLocale(path, locale, defaultLocale) {
@@ -1882,7 +2059,19 @@ function delLocale(path, locale) {
   return path;
 }
 
+function pathNoQueryHash(path) {
+  const queryIndex = path.indexOf('?');
+  const hashIndex = path.indexOf('#');
+
+  if (queryIndex > -1 || hashIndex > -1) {
+    path = path.substring(0, queryIndex > -1 ? queryIndex : hashIndex);
+  }
+
+  return path;
+}
+
 function hasBasePath(path) {
+  path = pathNoQueryHash(path);
   return path === basePath || path.startsWith(basePath + '/');
 }
 
@@ -1892,7 +2081,9 @@ function addBasePath(path) {
 }
 
 function delBasePath(path) {
-  return path.slice(basePath.length) || '/';
+  path = path.slice(basePath.length);
+  if (!path.startsWith('/')) path = `/${path}`;
+  return path;
 }
 /**
 * Detects whether a given url is routable by the Next.js router (browser only).
@@ -1939,7 +2130,11 @@ function interpolateAs(route, asPathname, query) {
 
     if (repeat && !Array.isArray(value)) value = [value];
     return (optional || param in dynamicMatches) && ( // Interpolate group into data URL if present
-    interpolatedRoute = interpolatedRoute.replace(replaced, repeat ? value.map(_escapePathDelimiters.default).join('/') : (0, _escapePathDelimiters.default)(value)) || '/');
+    interpolatedRoute = interpolatedRoute.replace(replaced, repeat ? value.map( // these values should be fully encoded instead of just
+    // path delimiter escaped since they are being inserted
+    // into the URL and we expect URL encoded segments
+    // when parsing dynamic route params
+    segment => encodeURIComponent(segment)).join('/') : encodeURIComponent(value)) || '/');
   })) {
     interpolatedRoute = ''; // did not satisfy all requirements
     // n.b. We ignore this error because we handle warning for this case in
@@ -2005,17 +2200,30 @@ function resolveHref(currentPath, href, resolveAs) {
   }
 }
 
+function stripOrigin(url) {
+  const origin = (0, _utils.getLocationOrigin)();
+  return url.startsWith(origin) ? url.substring(origin.length) : url;
+}
+
 function prepareUrlAs(router, url, as) {
   // If url and as provided as an object representation,
   // we'll format them into the string version here.
+  let [resolvedHref, resolvedAs] = resolveHref(router.pathname, url, true);
+  const origin = (0, _utils.getLocationOrigin)();
+  const hrefHadOrigin = resolvedHref.startsWith(origin);
+  const asHadOrigin = resolvedAs && resolvedAs.startsWith(origin);
+  resolvedHref = stripOrigin(resolvedHref);
+  resolvedAs = resolvedAs ? stripOrigin(resolvedAs) : resolvedAs;
+  const preparedUrl = hrefHadOrigin ? resolvedHref : addBasePath(resolvedHref);
+  const preparedAs = as ? stripOrigin(resolveHref(router.pathname, as)) : resolvedAs || resolvedHref;
   return {
-    url: addBasePath(resolveHref(router.pathname, url)),
-    as: as ? addBasePath(resolveHref(router.pathname, as)) : as
+    url: preparedUrl,
+    as: asHadOrigin ? preparedAs : addBasePath(preparedAs)
   };
 }
 
 const manualScrollRestoration =  false && false;
-const SSG_DATA_NOT_FOUND_ERROR = 'SSG Data NOT_FOUND';
+const SSG_DATA_NOT_FOUND = Symbol('SSG_DATA_NOT_FOUND');
 
 function fetchRetry(url, attempts) {
   return fetch(url, {
@@ -2038,9 +2246,15 @@ function fetchRetry(url, attempts) {
       }
 
       if (res.status === 404) {
-        // TODO: handle reloading in development from fallback returning 200
-        // to on-demand-entry-handler causing it to reload periodically
-        throw new Error(SSG_DATA_NOT_FOUND_ERROR);
+        return res.json().then(data => {
+          if (data.notFound) {
+            return {
+              notFound: SSG_DATA_NOT_FOUND
+            };
+          }
+
+          throw new Error(`Failed to load static props`);
+        });
       }
 
       throw new Error(`Failed to load static props`);
@@ -2079,7 +2293,8 @@ class Router {
     isFallback,
     locale,
     locales,
-    defaultLocale
+    defaultLocale,
+    domainLocales
   }) {
     this.route = void 0;
     this.pathname = void 0;
@@ -2101,6 +2316,9 @@ class Router {
     this.locale = void 0;
     this.locales = void 0;
     this.defaultLocale = void 0;
+    this.domainLocales = void 0;
+    this.isReady = void 0;
+    this._idx = 0;
 
     this.onPopState = e => {
       const state = e.state;
@@ -2130,11 +2348,17 @@ class Router {
         return;
       }
 
+      let forcedScroll;
       const {
         url,
         as,
-        options
+        options,
+        idx
       } = state;
+
+      if (false) {}
+
+      this._idx = idx;
       const {
         pathname
       } = (0, _parseRelativeUrl.parseRelativeUrl)(url); // Make sure we don't re-render on initial load,
@@ -2153,7 +2377,7 @@ class Router {
       this.change('replaceState', url, as, Object.assign({}, options, {
         shallow: options.shallow && this._shallow,
         locale: options.locale || this.defaultLocale
-      }));
+      }), forcedScroll);
     }; // represents the current component key
 
 
@@ -2188,8 +2412,9 @@ class Router {
     this.query = _query; // if auto prerendered and dynamic route wait to update asPath
     // until after mount to prevent hydration mismatch
 
-    this.asPath = // @ts-ignore this is temporarily global (attached to window)
-    (0, _isDynamic.isDynamicRoute)(_pathname) && __NEXT_DATA__.autoExport ? _pathname : _as;
+    const autoExportDynamic = (0, _isDynamic.isDynamicRoute)(_pathname) && self.__NEXT_DATA__.autoExport;
+
+    this.asPath = autoExportDynamic ? _pathname : _as;
     this.basePath = basePath;
     this.sub = subscription;
     this.clc = null;
@@ -2198,6 +2423,7 @@ class Router {
 
     this.isSsr = true;
     this.isFallback = isFallback;
+    this.isReady = !!(self.__NEXT_DATA__.gssp || self.__NEXT_DATA__.gip || !autoExportDynamic && !self.location.search);
 
     if (false) {}
 
@@ -2223,7 +2449,9 @@ class Router {
   */
 
 
-  push(url, as = url, options = {}) {
+  push(url, as, options = {}) {
+    if (false) {}
+
     ;
     ({
       url,
@@ -2239,7 +2467,7 @@ class Router {
   */
 
 
-  replace(url, as = url, options = {}) {
+  replace(url, as, options = {}) {
     ;
     ({
       url,
@@ -2248,12 +2476,24 @@ class Router {
     return this.change('replaceState', url, as, options);
   }
 
-  async change(method, url, as, options) {
+  async change(method, url, as, options, forcedScroll) {
+    var _options$scroll;
+
     if (!isLocalURL(url)) {
       window.location.href = url;
       return false;
-    }
+    } // for static pages with query params in the URL we delay
+    // marking the router ready until after the query is updated
 
+
+    if (options._h) {
+      this.isReady = true;
+    } // Default to scroll reset behavior unless explicitly specified to be
+    // `false`! This makes the behavior between using `Router#push` and a
+    // `<Link />` consistent.
+
+
+    options.scroll = !!((_options$scroll = options.scroll) != null ? _options$scroll : true);
     let localeChange = options.locale !== this.locale;
 
     if (false) { var _this$locales; }
@@ -2292,7 +2532,7 @@ class Router {
 
       this.changeState(method, url, as, options);
       this.scrollToHash(cleanedAs);
-      this.notify(this.components[this.route]);
+      this.notify(this.components[this.route], null);
       Router.events.emit('hashChangeComplete', as, routeProps);
       return true;
     }
@@ -2346,6 +2586,13 @@ class Router {
 
     if (false) {}
 
+    if (!isLocalURL(as)) {
+      if (false) {}
+
+      window.location.href = as;
+      return false;
+    }
+
     resolvedAs = delLocale(delBasePath(resolvedAs), this.locale);
 
     if ((0, _isDynamic.isDynamicRoute)(route)) {
@@ -2378,7 +2625,7 @@ class Router {
     Router.events.emit('routeChangeStart', as, routeProps);
 
     try {
-      const routeInfo = await this.getRouteInfo(route, pathname, query, as, routeProps);
+      let routeInfo = await this.getRouteInfo(route, pathname, query, addBasePath(addLocale(resolvedAs, this.locale)), routeProps);
       let {
         error,
         props,
@@ -2386,27 +2633,45 @@ class Router {
         __N_SSP
       } = routeInfo; // handle redirect on client-transition
 
-      if ((__N_SSG || __N_SSP) && props && props.pageProps && props.pageProps.__N_REDIRECT) {
-        const destination = props.pageProps.__N_REDIRECT; // check if destination is internal (resolves to a page) and attempt
-        // client-navigation if it is falling back to hard navigation if
-        // it's not
+      if ((__N_SSG || __N_SSP) && props) {
+        if (props.pageProps && props.pageProps.__N_REDIRECT) {
+          const destination = props.pageProps.__N_REDIRECT; // check if destination is internal (resolves to a page) and attempt
+          // client-navigation if it is falling back to hard navigation if
+          // it's not
 
-        if (destination.startsWith('/')) {
-          const parsedHref = (0, _parseRelativeUrl.parseRelativeUrl)(destination);
+          if (destination.startsWith('/')) {
+            const parsedHref = (0, _parseRelativeUrl.parseRelativeUrl)(destination);
 
-          this._resolveHref(parsedHref, pages, false);
+            this._resolveHref(parsedHref, pages, false);
 
-          if (pages.includes(parsedHref.pathname)) {
-            const {
-              url: newUrl,
-              as: newAs
-            } = prepareUrlAs(this, destination, destination);
-            return this.change(method, newUrl, newAs, options);
+            if (pages.includes(parsedHref.pathname)) {
+              const {
+                url: newUrl,
+                as: newAs
+              } = prepareUrlAs(this, destination, destination);
+              return this.change(method, newUrl, newAs, options);
+            }
           }
-        }
 
-        window.location.href = destination;
-        return new Promise(() => {});
+          window.location.href = destination;
+          return new Promise(() => {});
+        } // handle SSG data 404
+
+
+        if (props.notFound === SSG_DATA_NOT_FOUND) {
+          let notFoundRoute;
+
+          try {
+            await this.fetchComponent('/404');
+            notFoundRoute = '/404';
+          } catch (_) {
+            notFoundRoute = '/_error';
+          }
+
+          routeInfo = await this.getRouteInfo(notFoundRoute, notFoundRoute, query, as, {
+            shallow: false
+          });
+        }
       }
 
       Router.events.emit('beforeHistoryChange', as, routeProps);
@@ -2414,7 +2679,10 @@ class Router {
 
       if (false) {}
 
-      await this.set(route, pathname, query, cleanedAs, routeInfo).catch(e => {
+      await this.set(route, pathname, query, cleanedAs, routeInfo, forcedScroll || (options.scroll ? {
+        x: 0,
+        y: 0
+      } : null)).catch(e => {
         if (e.cancelled) error = error || e;else throw e;
       });
 
@@ -2422,8 +2690,6 @@ class Router {
         Router.events.emit('routeChangeError', error, cleanedAs, routeProps);
         throw error;
       }
-
-      if (false) {}
 
       if (false) {}
 
@@ -2447,7 +2713,8 @@ class Router {
         url,
         as,
         options,
-        __N: true
+        __N: true,
+        idx: this._idx = method !== 'pushState' ? this._idx : this._idx + 1
       }, // Most browsers currently ignores this parameter, although they may use it in the future.
       // Passing the empty string here should be safe against future changes to the method.
       // https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState
@@ -2478,24 +2745,6 @@ class Router {
       let Component;
       let styleSheets;
       let props;
-      const ssg404 = err.message === SSG_DATA_NOT_FOUND_ERROR;
-
-      if (ssg404) {
-        try {
-          let mod;
-          ({
-            page: Component,
-            styleSheets,
-            mod
-          } = await this.fetchComponent('/404')); // TODO: should we tolerate these props missing and still render the
-          // page instead of falling back to _error?
-
-          if (mod && mod.__N_SSG) {
-            props = await this._getStaticData(this.pageLoader.getDataHref('/404', '/404', true, this.locale));
-          }
-        } catch (_err) {// non-fatal fallback to _error
-        }
-      }
 
       if (typeof Component === 'undefined' || typeof styleSheets === 'undefined') {
         ;
@@ -2509,8 +2758,8 @@ class Router {
         props,
         Component,
         styleSheets,
-        err: ssg404 ? undefined : err,
-        error: ssg404 ? undefined : err
+        err,
+        error: err
       };
 
       if (!routeInfo.props) {
@@ -2578,13 +2827,13 @@ class Router {
     }
   }
 
-  set(route, pathname, query, as, data) {
+  set(route, pathname, query, as, data, resetScroll) {
     this.isFallback = false;
     this.route = route;
     this.pathname = pathname;
     this.query = query;
     this.asPath = as;
-    return this.notify(data);
+    return this.notify(data, resetScroll);
   }
   /**
   * Callback to execute before replacing router state
@@ -2791,29 +3040,14 @@ class Router {
     }
   }
 
-  notify(data) {
-    return this.sub(data, this.components['/_app'].Component);
+  notify(data, resetScroll) {
+    return this.sub(data, this.components['/_app'].Component, resetScroll);
   }
 
 }
 
 exports.default = Router;
 Router.events = (0, _mitt.default)();
-
-/***/ }),
-
-/***/ "fcRV":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = escapePathDelimiters; // escape delimiters used by path-to-regexp
-
-function escapePathDelimiters(segment) {
-  return segment.replace(/[/#?]/g, char => encodeURIComponent(char));
-}
 
 /***/ }),
 
@@ -3012,7 +3246,7 @@ function parseRelativeUrl(url, base) {
   } = new URL(url, resolvedBase);
 
   if (origin !== globalBase.origin) {
-    throw new Error('invariant: invalid relative URL');
+    throw new Error(`invariant: invalid relative URL, router received ${url}`);
   }
 
   return {
@@ -3023,6 +3257,13 @@ function parseRelativeUrl(url, base) {
     href: href.slice(globalBase.origin.length)
   };
 }
+
+/***/ }),
+
+/***/ "n9Bu":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/Code");
 
 /***/ }),
 
@@ -3068,7 +3309,7 @@ const singletonRouter = {
 
 }; // Create public properties and methods of the router in the singletonRouter
 
-const urlPropertyFields = ['pathname', 'route', 'query', 'asPath', 'components', 'isFallback', 'basePath', 'locale', 'locales', 'defaultLocale'];
+const urlPropertyFields = ['pathname', 'route', 'query', 'asPath', 'components', 'isFallback', 'basePath', 'locale', 'locales', 'defaultLocale', 'isReady'];
 const routerEvents = ['routeChangeStart', 'beforeHistoryChange', 'routeChangeComplete', 'routeChangeError', 'hashChangeStart', 'hashChangeComplete'];
 const coreMethodFields = ['push', 'replace', 'reload', 'back', 'prefetch', 'beforePopState']; // Events is a static property on the router, the router doesn't have to be initialized to use it
 
@@ -3240,6 +3481,7 @@ function observe(element, callback, options) {
   elements.set(element, callback);
   observer.observe(element);
   return function unobserve() {
+    elements.delete(element);
     observer.unobserve(element); // Destroy observer when there's nothing left to watch:
 
     if (elements.size === 0) {
