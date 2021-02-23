@@ -1,8 +1,7 @@
 {
   "/_app": "pages/_app.js",
-  "/cham-ngon": "pages/cham-ngon.js",
-  "/": "pages/index.js",
-  "/wheel-name": "pages/wheel-name.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/wheel-name": "pages/wheel-name.js"
 }
