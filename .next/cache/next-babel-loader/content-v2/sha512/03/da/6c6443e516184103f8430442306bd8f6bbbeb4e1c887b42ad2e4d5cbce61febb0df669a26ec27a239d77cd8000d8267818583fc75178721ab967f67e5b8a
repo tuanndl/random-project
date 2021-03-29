@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React, { Fragment } from 'react';\nimport { Head, Footer, Header } from '../index';\n\nconst Layout = props => {\n  return __jsx(Fragment, null, __jsx(Head, null), __jsx(Header, null), props.children);\n};\n\nexport default Layout;","map":null,"metadata":{},"sourceType":"module"}

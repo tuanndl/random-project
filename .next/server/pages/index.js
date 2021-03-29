@@ -858,7 +858,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   }
 
   render() {
-    return __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* Layout */ "f"], null, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* Home */ "e"], null));
+    return __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* Layout */ "e"], null, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__[/* Home */ "d"], null));
   }
 
 }
@@ -1496,15 +1496,14 @@ function mitt() {
 "use strict";
 
 // EXPORTS
-__webpack_require__.d(__webpack_exports__, "e", function() { return /* reexport */ Home; });
-__webpack_require__.d(__webpack_exports__, "b", function() { return /* reexport */ components_Footer_Footer; });
-__webpack_require__.d(__webpack_exports__, "d", function() { return /* reexport */ ButtonAppBar; });
-__webpack_require__.d(__webpack_exports__, "c", function() { return /* reexport */ Head; });
-__webpack_require__.d(__webpack_exports__, "g", function() { return /* reexport */ random_WheelName_WheelName; });
-__webpack_require__.d(__webpack_exports__, "f", function() { return /* reexport */ layout_Layout; });
+__webpack_require__.d(__webpack_exports__, "d", function() { return /* reexport */ Home; });
+__webpack_require__.d(__webpack_exports__, "c", function() { return /* reexport */ ButtonAppBar; });
+__webpack_require__.d(__webpack_exports__, "b", function() { return /* reexport */ Head; });
+__webpack_require__.d(__webpack_exports__, "f", function() { return /* reexport */ random_WheelName_WheelName; });
+__webpack_require__.d(__webpack_exports__, "e", function() { return /* reexport */ layout_Layout; });
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* reexport */ chamNgon_ChamNgon; });
 
-// UNUSED EXPORTS: RandomNumber, MessengerChat
+// UNUSED EXPORTS: Footer, RandomNumber, MessengerChat
 
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__("cDcd");
@@ -1860,29 +1859,23 @@ function ButtonAppBar() {
   return Header_jsx("div", {
     className: classes.root
   }, Header_jsx(AppBar_default.a, {
-    color: "default",
+    color: "primary",
     position: "static"
   }, Header_jsx(Toolbar_default.a, null, Header_jsx(Code_default.a, {
     className: classes.menuButton
   }), Header_jsx(Typography_default.a, {
     variant: "h6",
     className: classes.title
-  }, "TOOLS nhanh"), Header_jsx(Button_default.a, {
-    color: "inherit"
-  }, Header_jsx(link_default.a, {
+  }, "TOOLS nhanh"), Header_jsx(link_default.a, {
     href: "/"
+  }, Header_jsx(Button_default.a, {
+    color: "inherit"
   }, Header_jsx("span", {
     className: `menu--link ${funcActiveClass('/')}`
-  }, "Quay S\u1ED1"))), Header_jsx(Button_default.a, {
-    color: "inherit"
-  }, Header_jsx(link_default.a, {
-    href: "/cham-ngon"
-  }, Header_jsx("span", {
-    className: `menu--link ${funcActiveClass('/cham-ngon')}`
-  }, "Ch\xE2m ng\xF4n"))), Header_jsx(Button_default.a, {
-    color: "inherit"
-  }, Header_jsx(link_default.a, {
+  }, "Quay S\u1ED1"))), Header_jsx(link_default.a, {
     href: "/wheel-name"
+  }, Header_jsx(Button_default.a, {
+    color: "inherit"
   }, Header_jsx("span", {
     className: `menu--link ${funcActiveClass('/wheel-name')}`
   }, "V\xF2ng Quay"))), Header_jsx(Button_default.a, {
@@ -1928,7 +1921,7 @@ var Layout_jsx = external_react_default.a.createElement;
 
 
 const Layout = props => {
-  return Layout_jsx(external_react_["Fragment"], null, Layout_jsx(Head, null), Layout_jsx(ButtonAppBar, null), props.children, Layout_jsx(components_Footer_Footer, null));
+  return Layout_jsx(external_react_["Fragment"], null, Layout_jsx(Head, null), Layout_jsx(ButtonAppBar, null), props.children);
 };
 
 /* harmony default export */ var layout_Layout = (Layout);
@@ -1951,7 +1944,25 @@ class ChamNgon_Index extends external_react_["Component"] {
     return ChamNgon_jsx(core_["Container"], {
       maxWidth: "sm",
       className: "box--center"
-    }, ChamNgon_jsx("ul", null, ChamNgon_jsx("li", null, "L\xFAc n\xE0y n\u1EBFu ng\u1EE7 b\u1EA1n s\u1EBD c\xF3 m\u1ED9t gi\u1EA5c m\u01A1, nh\u01B0ng l\xFAc n\xE0y n\u1EBFu h\u1ECDc b\u1EA1n s\u1EBD gi\u1EA3i th\xEDch \u0111\u01B0\u1EE3c \u01B0\u1EDBc m\u01A1."), ChamNgon_jsx("li", null, "Ng\xE0y h\xF4m nay n\u1EBFu b\u1EA1n l\xE3ng ph\xED, \u0111\u1ED3ng ngh\u0129a v\u1EDBi vi\u1EC7c b\u1EA1n b\xF3p c.h\u1EBFt qu\xE1 kh\u1EE9 v\xE0 v\u1EE9t b\u1ECF ng\xE0y mai."), ChamNgon_jsx("li", null, "Khi n\xE0o b\u1EA1n c\u1EA3m th\u1EA5y th\u1EDDi kh\u1EAFc \u0111\xE3 mu\u1ED9n, khi \u0111\xF3 th\u1EF1c s\u1EF1 l\xE0 th\u1EDDi \u0111i\u1EC3m h\xE0nh \u0111\u1ED9ng. "), ChamNgon_jsx("li", null, "S\u1EF1 kh\u1ED5 nh\u1ECDc khi h\u1ECDc ch\u1EC9 l\xE0 t\u1EA1m th\u1EDDi, s\u1EF1 \u0111au kh\u1ED5 v\xEC kh\xF4ng h\u1ECDc \u0111\u1EBFn n\u01A1i l\xE0 m\xE3i m\xE3i."), ChamNgon_jsx("li", null, "H\u1EA1nh ph\xFAc c\xF3 l\u1EBD kh\xF4ng c\xF3 th\u1EE9 l\u01B0\u1EE3t, nh\u01B0ng th\xE0nh c\xF4ng th\xEC c\xF3."), ChamNgon_jsx("li", null, "H\u1ECDc t\u1EADp ph\u1EA3i ch\u0103ng l\xE0 nhi\u1EC7m v\u1EE5 c\u1EA3 \u0111\u1EDDi, ngay c\u1EA3 ng\u01B0\u1EDDi h\u1ECDc c\u0169ng kh\xF4ng th\u1EC3 ch\u1EE9ng minh, c\xF2n c\xF3 th\u1EC3 l\xE0m g\xEC?"), ChamNgon_jsx("li", null, "H\xE3y \u0111\xF3n nh\u1EADn s\u1EF1 kh\xF3 nh\u1ECDc kh\xF4ng th\u1EC3 ch\u1ED1i t\u1EEB."), ChamNgon_jsx("li", null, "N\u01B0\u1EDBc b\u1ECDt hi\u1EC7n t\u1EA1i s\u1EBD l\xE0 n\u01B0\u1EDBc m\u1EAFt c\u1EE7a ng\xE0y mai."), ChamNgon_jsx("li", null, "Ng\u01B0\u1EDDi \u0111\u1EA7u t\u01B0 cho t\u01B0\u01A1ng lai, l\xE0 ng\u01B0\u1EDDi th\u1EF1c hi\u1EC7n \u0111\u1EBFn c\xF9ng.")));
+    }, ChamNgon_jsx("ul", null, ChamNgon_jsx("li", {
+      className: "quote"
+    }, "L\xFAc n\xE0y n\u1EBFu ng\u1EE7 b\u1EA1n s\u1EBD c\xF3 m\u1ED9t gi\u1EA5c m\u01A1, nh\u01B0ng l\xFAc n\xE0y n\u1EBFu h\u1ECDc b\u1EA1n s\u1EBD gi\u1EA3i th\xEDch \u0111\u01B0\u1EE3c \u01B0\u1EDBc m\u01A1."), ChamNgon_jsx("li", {
+      className: "quote"
+    }, "Ng\xE0y h\xF4m nay n\u1EBFu b\u1EA1n l\xE3ng ph\xED, \u0111\u1ED3ng ngh\u0129a v\u1EDBi vi\u1EC7c b\u1EA1n b\xF3p c.h\u1EBFt qu\xE1 kh\u1EE9 v\xE0 v\u1EE9t b\u1ECF ng\xE0y mai."), ChamNgon_jsx("li", {
+      className: "quote"
+    }, "Khi n\xE0o b\u1EA1n c\u1EA3m th\u1EA5y th\u1EDDi kh\u1EAFc \u0111\xE3 mu\u1ED9n, khi \u0111\xF3 th\u1EF1c s\u1EF1 l\xE0 th\u1EDDi \u0111i\u1EC3m h\xE0nh \u0111\u1ED9ng.", ' '), ChamNgon_jsx("li", {
+      className: "quote"
+    }, "S\u1EF1 kh\u1ED5 nh\u1ECDc khi h\u1ECDc ch\u1EC9 l\xE0 t\u1EA1m th\u1EDDi, s\u1EF1 \u0111au kh\u1ED5 v\xEC kh\xF4ng h\u1ECDc \u0111\u1EBFn n\u01A1i l\xE0 m\xE3i m\xE3i."), ChamNgon_jsx("li", {
+      className: "quote"
+    }, "H\u1EA1nh ph\xFAc c\xF3 l\u1EBD kh\xF4ng c\xF3 th\u1EE9 l\u01B0\u1EE3t, nh\u01B0ng th\xE0nh c\xF4ng th\xEC c\xF3."), ChamNgon_jsx("li", {
+      className: "quote"
+    }, "H\u1ECDc t\u1EADp ph\u1EA3i ch\u0103ng l\xE0 nhi\u1EC7m v\u1EE5 c\u1EA3 \u0111\u1EDDi, ngay c\u1EA3 ng\u01B0\u1EDDi h\u1ECDc c\u0169ng kh\xF4ng th\u1EC3 ch\u1EE9ng minh, c\xF2n c\xF3 th\u1EC3 l\xE0m g\xEC?"), ChamNgon_jsx("li", {
+      className: "quote"
+    }, "H\xE3y \u0111\xF3n nh\u1EADn s\u1EF1 kh\xF3 nh\u1ECDc kh\xF4ng th\u1EC3 ch\u1ED1i t\u1EEB."), ChamNgon_jsx("li", {
+      className: "quote"
+    }, "N\u01B0\u1EDBc b\u1ECDt hi\u1EC7n t\u1EA1i s\u1EBD l\xE0 n\u01B0\u1EDBc m\u1EAFt c\u1EE7a ng\xE0y mai."), ChamNgon_jsx("li", {
+      className: "quote"
+    }, "Ng\u01B0\u1EDDi \u0111\u1EA7u t\u01B0 cho t\u01B0\u01A1ng lai, l\xE0 ng\u01B0\u1EDDi th\u1EF1c hi\u1EC7n \u0111\u1EBFn c\xF9ng.")));
   }
 
 }

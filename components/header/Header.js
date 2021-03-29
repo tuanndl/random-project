@@ -42,7 +42,7 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar color='default' position='static'>
+      <AppBar color='primary' position='static'>
         <Toolbar>
           <CodeIcon className={classes.menuButton} />
 
@@ -50,23 +50,23 @@ export default function ButtonAppBar() {
             TOOLS nhanh
           </Typography>
 
-          <Button color='inherit'>
-            <Link href='/'>
+          <Link href='/'>
+            <Button color='inherit'>
               <span className={`menu--link ${funcActiveClass('/')}`}>Quay Số</span>
-            </Link>
-          </Button>
+            </Button>
+          </Link>
 
-          <Button color='inherit'>
-            <Link href='/cham-ngon'>
+          {/* <Link href='/cham-ngon'>
+            <Button color='inherit'>
               <span className={`menu--link ${funcActiveClass('/cham-ngon')}`}>Châm ngôn</span>
-            </Link>
-          </Button>
+            </Button>
+          </Link> */}
 
-          <Button color='inherit'>
-            <Link href='/wheel-name'>
+          <Link href='/wheel-name'>
+            <Button color='inherit'>
               <span className={`menu--link ${funcActiveClass('/wheel-name')}`}>Vòng Quay</span>
-            </Link>
-          </Button>
+            </Button>
+          </Link>
 
           <Button color='inherit' className='menu--link'>
             <span className={`menu--link`} onClick={onLogin}>
